@@ -14,10 +14,13 @@
 # Chapter 8: Program Specification
 
 Now that we have the fundamentals of OOP in Java out of the way, we are ready to think more deeply about how we go about developing a program.
-Before we can implement anything, we need an idea of **what** functionality the program should provide. This may initially take the form of a written specification. The specification would use words relevant to the domain that the program will be used in.
+Before we can implement anything, we need an idea of **what** functionality the program should provide. This may initially 
+take the form of a written specification. The specification would use words relevant to the domain that the program will be used in.
 For example, if developing software in a medical setting, words like "doctor", "medical records", "patient", and "insurance" are likely to appear.
 
-As you know from your first-year courses, we can perform a noun-verb analysis of such a specification to arrive at an initial set of classes (with variables and methods) and abstractions (abstract classes and interfaces in Java) to model the specific domain. We refer to these classes that represent the data of the program as _entities_. These will be the building blocks of our program.
+As you know from your first-year courses, we can perform a noun-verb analysis of such a specification to arrive at an 
+initial set of classes (with variables and methods) and abstractions (abstract classes and interfaces in Java) to model 
+the specific domain. We refer to these classes that represent the data of the program as _entities_. These will be the building blocks of our program.
 
 The output of this first step is often a set of UML class diagrams summarizing the initial set of proposed entities for our system.
 Such diagrams can then be turned into code by developers.
@@ -170,13 +173,18 @@ Here are a couple user stories for a social media app:
 
 They follow a common, but optional, format: "As a [kind of user], I want to [accomplish a goal] so that [I receive some benefit]."
 
-User stories are short on purpose. They give the team and client a starting point for discussing a feature; they are not usually a complete specification by themselves. A team may add acceptance criteria describing observable conditions that must be true for the story to be considered complete.
+User stories are short on purpose. They give the team and client a starting point for discussing a feature; they are not 
+usually a complete specification by themselves. A team may add acceptance criteria describing observable conditions that 
+must be true for the story to be considered complete.
 
 ### Choosing an appropriate scope
 
-User stories can describe work at very different scales. A story that covers many related goals is often called an _epic_, while an implementation task describes work to be done without expressing a user's goal.
+User stories can describe work at very different scales. A story that covers many related goals is often called an _epic_, 
+while an implementation task describes work to be done without expressing a user's goal.
 
-For the course project, aim for a story that describes one focused user goal and is small enough for one team member to make meaningful progress on it. As a useful rule of thumb, each story should lead naturally to one use case in the program. This is a course-project heuristic rather than a rule followed by every software team.
+For the course project, aim for a story that describes one focused user goal and is small enough for one team member to 
+make meaningful progress on it. As a useful rule of thumb, each story should lead naturally to one use case in the program.
+This is a course-project heuristic rather than a rule followed by every software team.
 
 | Scope | Example | Assessment |
 | --- | --- | --- |
@@ -194,21 +202,29 @@ For another introduction to story scope and acceptance criteria, see Atlassian's
 
 > Note: we'll cover these ideas in more detail later, but it is useful to start thinking through the process now.
 
-A _use case_ describes how an actor and a system interact to accomplish a goal. It adds behavioural detail to a user story: what starts the interaction, what normally happens, what can go wrong, and what outcome the system guarantees.
+A _use case_ describes how an actor and a system interact to accomplish a goal. It adds behavioural detail to a user 
+story: what starts the interaction, what normally happens, what can go wrong, and what outcome the system guarantees.
 
-There is no single use-case format used by every software team. Some teams write detailed specifications, while others use a short description, acceptance criteria, or executable scenarios. The lightweight format below is practical for the course project because it makes the important decisions visible without requiring a large document.
+There is no single use-case format used by every software team. Some teams write detailed specifications, while others 
+use a short description, acceptance criteria, or executable scenarios. The lightweight format below is practical for 
+the course project because it makes the important decisions visible without requiring a large document.
 
 ### A lightweight use-case format
 
 * **Name:** an active verb phrase that states the actor's goal, such as "Send a friend request."
-* **Primary actor:** the external role that starts the use case in order to achieve a goal. The software system itself is not an actor. Other people or external systems involved may be listed as supporting actors.
+* **Primary actor:** the external role that starts the use case in order to achieve a goal. The software system itself 
+is not an actor. Other people or external systems involved may be listed as supporting actors.
 * **Preconditions:** facts that must already be true when the use case begins. They are assumptions, not steps that the use case performs.
 * **Trigger:** the event that starts the use case.
-* **Success outcome:** the observable state of the system after the goal is achieved. A more detailed specification may also state what the system guarantees after failure.
+* **Success outcome:** the observable state of the system after the goal is achieved. A more detailed specification may 
+also state what the system guarantees after failure.
 * **Main success scenario:** a numbered sequence showing the usual successful interaction between the actor and the system.
 * **Extensions:** alternative or failure paths, tied to the step at which they can occur.
 
-Write the steps in terms of the actor's intent and the system's observable response. Include enough detail to remove important ambiguity, but avoid class names, method calls, database operations, and unnecessary interface details. Those are design and implementation decisions. For example, "the user asks to send a friend request" allows the interface designer to choose an appropriate button, menu item, or other control later.
+Write the steps in terms of the actor's intent and the system's observable response. Include enough detail to remove 
+important ambiguity, but avoid class names, method calls, database operations, and unnecessary interface details. 
+Those are design and implementation decisions. For example, "the user asks to send a friend request" allows the 
+interface designer to choose an appropriate button, menu item, or other control later.
 
 Here is an example use case for the user story about sending a friend request:
 
@@ -243,20 +259,26 @@ Here is an example use case for the user story about sending a friend request:
   1. The system explains that the request was not sent and that the user may try again.
   2. The use case ends with no pending request.
 
-Searching for a person and viewing their profile happen before this use case and could be use cases of their own. Similarly, the other user accepting or declining the request is a separate goal, **Respond to a Friend Request**, with a different primary actor. Keeping these goals separate makes each use case easier to understand, assign, implement, and test.
+Searching for a person and viewing their profile happen before this use case and could be use cases of their own. 
+Similarly, the other user accepting or declining the request is a separate goal, **Respond to a Friend Request**, 
+with a different primary actor. Keeping these goals separate makes each use case easier to understand, assign, implement, and test.
 
 ### From specification to design
 
-A use case says what behaviour the system must provide, but it does not prescribe the entire user interface or the classes that implement it. The team can next:
+A use case says what behaviour the system must provide, but it does not prescribe the entire user interface or the 
+classes that implement it. The team can next:
 
 * add acceptance criteria or tests for the success and extension paths;
 * sketch the views before and after important interactions, including error states;
 * identify the entities and data access operations involved; and
 * design the Clean Architecture classes that realize the use case.
 
-In Clean Architecture, the use case interactor implements the application-specific rules for the goal. The controller, presenter, view model, and view connect those rules to the user interface. Do not turn every click or screen transition into its own interactor: design around a coherent user goal.
+In Clean Architecture, the use case interactor implements the application-specific rules for the goal. 
+The controller, presenter, view model, and view connect those rules to the user interface. 
+Do not turn every click or screen transition into its own interactor: design around a coherent user goal.
 
-Once the team chooses a scoped story to implement, the [feature development workflow](00-introduction-to-git.md#04-feature-development-workflow) gives one way to organize the implementation and review work.
+Once the team chooses a scoped story to implement, the [feature development workflow](00-introduction-to-git.md#04-feature-development-workflow) 
+gives one way to organize the implementation and review work.
 
 ## 8.5. Exercises
 
@@ -310,18 +332,44 @@ Then answer: **which class should be responsible for knowing whether an item is
 currently on loan?** Give at least two candidates and the trade-off between
 them.
 
+- Trigger from calling placeHold method from Hold class, using member to identify the person holding and catalogueNumber
+- to identify the item being borrowed. Call involves classes Hold, Person and its subclass Member, and Item.
+
+- Loan method borrowItem changes borrowability of the item identified by the catalogue number to false.
+...
+- The implementation for a borrowable item that attributes an item as borrowable is through an interface that
+- contains the method getLoanPeriodDays, non-borrowable items do not implement this interface. On loan would not be
+- appropriately stored if in interface Borrowable. For abstract Item class, non-borrowable items extend the class as well,
+- so should not assign as private attribute. On loan should therefore be stored as private attribute of LoanableItem.
+
 <details>
 <summary>Hints</summary>
 
 - The phrase "reference-only ... cannot be borrowed at all" is a hint that not
   every item supports the same operations. What does that suggest about where
   `borrow` should live?
+
+Suggest that item and borrowability do not enforce each other's existence, should exist as separate classes.
+Borrow could be its own interface implemented by classes, with item being an abstract class extended by DVDs, books
+and Reference items alike.
+
 - `Member` and `Librarian` are both people the library knows about, and both act
   on items. Is there shared state or behaviour worth pulling into a common
   supertype — and does the specification tell you everything you need to decide?
+
+There is common behavior such that they both can act on attributes of items. The librarian is special in that it can
+add to the list of items and edit members' fees. If assuming being librarian and member is mutually exclusive, then
+there is no need for a superclass. But if one person can be both, a superclass could be useful to indicate that one
+entity is both member and librarian.
+
 - A hold has to be *remembered* by something. Ask yourself which object still
   exists, and is easy to find, at the moment someone needs to know about the
   hold.
+
+A hold involves both the catalogue number and member, the Item and Member. If we are checking if an item is on hold,
+most straightforwardly we would use the private attribute in the item itself to record if it on loan/on hold, both
+changing borrowability to false.
+
 - These are open design questions. More than one answer is defensible; what
   matters is that you can say what your answer makes easy and what it makes
   awkward.
@@ -350,13 +398,54 @@ Write a use case using the lightweight format from this section:
 4. Write an extension for the room becoming unavailable. Tie it to a particular step in the main scenario.
 5. Identify one more plausible extension. State what the user observes and whether the system's state changes.
 
+**Use Case: Reserve a study room**
+**Primary actor:** Student submitting a reservation for a room
+**Precondition:**
+* The student is signed in on the webpage
+* The student has selected a room, date and time
+* The room has no other reservation at the date and time of day
+
+**Trigger:** The student submits a booking for a room for a date and time
+
+**Success Outcome:** The reservation is placed for the room at the date and time, and a confirmation message is displayed
+
+**Main success scenario**
+1. The student selects a room for a time and date
+2. The system checks the room's bookings for that date and time
+3. The system records the student reservation if the period has no other bookings
+4. The system notifies the student of the reservation
+
+**Extensions:**
+* **1a.** The room has a preexisting booking during the selected time and date
+    1. The system reports there is a conflict between the student selected time and date and existing bookings
+  2. The system does not place a reservation, ending the use case
+
 Review your draft with these questions:
 
 * Does the use case pursue one user goal?
+
+Yes, to book a room, does not consider close and relevant cases e.g. checking a room's availability.
+
 * Are preconditions stated as facts rather than hidden setup steps?
+
+They are facts as they are presence-verifiable information.
+
 * Does each main-flow step describe an actor action or an observable system responsibility?
+
+Each main-flow step involves an action or internal checking.
+
 * Are alternative and failure paths separated from the successful path?
+
+Yes, failure cases are not included.
+
 * Does the success outcome make the use case testable?
+
+Yes, by verifying the success message.
+
 * Have you avoided committing prematurely to UI widgets, classes, methods, or database details?
 
-As a scope check, compare the story above with "As a student, I want to manage all of my room bookings," which is likely an epic, and "Build the room-booking form," which is an implementation task. The exercise story sits between them: it expresses one useful, implementable user goal.
+No, does not refer to such details at all.
+
+As a scope check, compare the story above with "As a student, I want to manage all of my room bookings," 
+which is likely an epic, and "Build the room-booking form," which is an implementation task. 
+The exercise story sits between them: it expresses one useful, implementable user goal.
