@@ -1,3 +1,6 @@
+import static java.lang.String.valueOf;
+import static java.lang.StringUTF16.charAt;
+
 /**
  * Exercise (Chapter 1: Introduction to Java) — while loops and integer
  * arithmetic.
@@ -22,6 +25,13 @@ public class DigitSum {
      */
     public static int digitSum(int n) {
         // TODO: complete
+        if (n < 0){
+            String sn = String.valueOf(n);
+            int acc = 0;
+            for (int x = 0; x < sn.length(); x++){
+                acc += (int) sn.charAt(x);
+            }
+        }
         return 0;
     }
 }

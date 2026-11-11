@@ -28,8 +28,7 @@ public class Gotchas {
    * @param name the new name
    */
   public void setName(String name) {
-    // TODO: assign the parameter to the FIELD (hint: use `this`).
-    name = name;
+    this.name = name;
   }
 
   /**
@@ -43,6 +42,7 @@ public class Gotchas {
   public static int[][] deepCopy(int[][] grid) {
     // TODO: build a new outer array and copy EACH inner array too, so that
     //       nothing is shared with `grid`.
+    int[] lst = {};
     return grid.clone();
   }
 
