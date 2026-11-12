@@ -1,5 +1,5 @@
 @startuml
-skinparam dpi 150
+skinparam dpi 100
 skinparam classAttributeIconSize 0
 hide empty members
 

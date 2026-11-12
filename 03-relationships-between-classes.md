@@ -953,8 +953,7 @@ class SavingsAccount extends Account implements InterestBearing {
 
 Note one thing the diagram does *not* show: because `Account` does not have a
 no-argument constructor, each subclass needs a constructor that calls
-`super(balance)`. UML
-leaves such details out, so you fill them in when you write the code.
+`super(balance)`. UML leaves such details out, so you fill them in when you write the code.
 
 </details>
 
