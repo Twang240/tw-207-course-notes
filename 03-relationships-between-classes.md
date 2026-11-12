@@ -888,7 +888,8 @@ Below is a breakdown of how to write the code and generate the final image.
 For example see the code for generating the above figure in [uml-shapes.puml](plantuml/uml-shapes.puml).
 
 2. Generating the Figure
-   Once your code is written, you can easily compile it into a visual diagram: copy your code and paste it directly into the official [PlantUML Online Server](https://www.plantuml.com/plantuml/uml). It will instantly render the image for you to view or download.
+   Once your code is written, you can easily compile it into a visual diagram: copy your code and paste it directly into 
+the official [PlantUML Online Server](https://www.plantuml.com/plantuml/uml). It will instantly render the image for you to view or download.
 
 ### Exercises
 
