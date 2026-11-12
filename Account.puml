@@ -1,0 +1,31 @@
+@startuml
+skinparam dpi 150
+skinparam classAttributeIconSize 0
+hide empty members
+
+abstract class Account {
+#balance : double
++deposit(amount : double) : void
++withdraw(amount : double) : boolean
+}
+
+class ChequingAccount {
+- overdraftLimit : double
++withdraw(amount:double) : boolean
+}
+
+class SavingsAccount{
+-rate : double
++withdraw(amount:double) : boolean
++addInterest() : void
+}
+
+abstract class InterestBearing{
++addInterest():void
+}
+
+Account <|-- ChequingAccount
+Account <|-- SavingsAccount
+InterestBearing <|.. SavingsAccount
+
+@enduml
