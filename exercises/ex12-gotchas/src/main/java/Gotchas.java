@@ -39,11 +39,13 @@ public class Gotchas {
    * @param grid a 2-D array
    * @return a copy whose inner arrays are also copies (nothing shared with grid)
    */
+  @SuppressWarnings("checkstyle:WhitespaceAround")
   public static int[][] deepCopy(int[][] grid) {
-    // TODO: build a new outer array and copy EACH inner array too, so that
-    //       nothing is shared with `grid`.
-    int[] lst = {};
-    return grid.clone();
+    int[][] copy = new int[grid.length][];
+    for (int i = 0; i < grid.length; i++) {
+      copy[i] = grid[i].clone();
+    }
+    return copy;
   }
 
   /**
@@ -57,7 +59,6 @@ public class Gotchas {
    * @return true iff a and b hold the same int value
    */
   public static boolean sameValue(Integer a, Integer b) {
-    // TODO: compare the VALUES, not the references.
-    return a == b;
+    return a.equals(b);
   }
 }
