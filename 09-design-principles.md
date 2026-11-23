@@ -338,4 +338,5 @@ classes, you are applying the DIP as well.
 
 ## 9.5. Beyond SOLID
 
-Principles are nice, but often it is what has been established based on them that is truly practical for programmers. We'll explore how these principles lead to layered architectures and patterns that we can apply when designing programs.
+Principles are nice, but often it is what has been established based on them that is truly practical for programmers. 
+We'll explore how these principles lead to layered architectures and patterns that we can apply when designing programs.

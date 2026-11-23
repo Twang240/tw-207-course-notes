@@ -34,7 +34,7 @@ class Car extends Vehicle {
 +maxSpeed():int
 }
 
-class ElectricCar extends Vehicle implements charge {
+class ElectricCar extends Car implements Chargeable {
 - batteryLevel : int
 # make : string
 +ElectricCar(make:String)

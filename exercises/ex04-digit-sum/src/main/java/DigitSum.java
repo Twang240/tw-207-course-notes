@@ -23,6 +23,7 @@ public class DigitSum {
      * @param n any int
      * @return the sum of its decimal digits
      */
+    @SuppressWarnings({"checkstyle:Indentation", "checkstyle:WhitespaceAround"})
     public static int digitSum(int n) {
         // TODO: complete
         if (n < 0){

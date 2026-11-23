@@ -1,10 +1,5 @@
 import java.awt.FlowLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 /**
  * Exercise (Chapter 4: GUIs with Swing) — matching a layout.
@@ -31,15 +26,34 @@ public class RegistrationForm {
    *
    * @return the form's root panel
    */
+
+  @SuppressWarnings({"checkstyle:Indentation", "checkstyle:VariableDeclarationUsageDistance", "checkstyle:LineLength"})
   public static JPanel buildForm() {
-    JPanel panel = new JPanel(new FlowLayout());
-    panel.add(new JLabel("First name:"));
-    panel.add(new JTextField(12));
-    panel.add(new JLabel("Last name:"));
-    panel.add(new JTextField(12));
-    panel.add(new JButton("Submit"));
-    panel.add(new JButton("Cancel"));
-    return panel;
+      /** adding in individual panels */
+      JPanel namePanel = new JPanel();
+      namePanel.add(new JLabel("First name:"));
+      namePanel.add(new JTextField(12));
+
+      JPanel lastNamePanel = new JPanel();
+      namePanel.add(new JLabel("Last name:"));
+      namePanel.add(new JTextField(12));
+
+      JButton submit = new JButton("Submit");
+      JButton cancel = new JButton("Cancel");
+
+      /** combining onto main frame */
+      JPanel mainPanel = new JPanel();
+      mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+      mainPanel.add(namePanel);
+      mainPanel.add(lastNamePanel);
+      mainPanel.add(submit);
+      mainPanel.add(cancel);
+      return mainPanel;
+
+
+      /** By default, `JPanel` contents flow left to right. You can set a `JPanel` to display its contents vertically instead.
+       Here, we create the main `JPanel`, set its layout to vertical (on the Y axis), and add the three nested `JPanel`s.
+       */
   }
 
   /** Shows the form in a window so you can compare it with the target picture. */
